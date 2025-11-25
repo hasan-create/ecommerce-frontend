@@ -1,0 +1,56 @@
+.navp{
+    display: flex;
+    margin-top: 0;
+    justify-content: space-between;
+    color: white;
+    background-color:#404040;
+}
+
+.nav ul{
+display: flex;
+list-style: none;
+    gap: 50px;
+      margin-right: 40px;
+      
+ 
+}
+nav ul li:hover{
+    transform: scale(1.05);
+}
+.brand{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 45px;
+    margin-left: 10px;
+    color:brown;
+
+}
+.login{
+    text-decoration: none;
+    color: inherit;
+}
+#home{
+    text-decoration: none;
+    color:white;
+}
+.Trends{
+    text-decoration: none;
+    color:inherit;
+}
+.Admin{
+    text-decoration: none;
+    color:inherit;
+}
+.Cart{
+    text-decoration: none;
+    color: inherit;
+}
+.profile{
+    text-decoration: none;
+    color: inherit;
+}
+.about{
+       text-decoration: none;
+    color: inherit;
+}

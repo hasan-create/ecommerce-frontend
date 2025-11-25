@@ -1,0 +1,45 @@
+.trendparent{
+display: flex;
+flex-direction:row-reverse ;
+height: 100vh;
+width: 99.7;
+
+}
+.h{
+    height: 95vh;
+    width:85vw;
+    float: right;
+    margin-right:7vw;
+    margin-top: 2vh;
+    border: solid black 1px;
+    padding: 0;
+}
+.hi{
+    height: 100%;
+    width: 40%;
+    float: right;
+}
+.htext{
+    height: 200px;
+    width: 300px;
+    
+    margin-left: 5%;
+    margin-top: 20%;
+}
+
+.hline{
+    border: solid 1px black;
+    height: 0px;
+    width: 30px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+.hhading{
+    font-weight: 500;
+    
+}
+.tpa{
+    font-weight: 500;
+    font-size: xx-large;
+    margin-left: 30vw;
+}

@@ -1,0 +1,66 @@
+.account-panel {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 20vw;
+  height: 60vh;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.account-panel.open {
+  right: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #444;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.profile-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: brown;
+  
+  margin-left: 8vw;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-email {
+  font-size: 16px;
+   margin-left: 8vw;
+  font-weight: 500;
+  color: black;
+}
+
+.panel-btn {
+  padding: 10px;
+  border: none;
+  background-color: #404040;
+   margin-left: 7vw;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.panel-btn:hover {
+  background-color: #333;
+}

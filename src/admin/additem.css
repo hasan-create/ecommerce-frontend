@@ -1,0 +1,95 @@
+/* Container for the Add Item form */
+.additem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f4f4f4;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.additem h1 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Form styling */
+.itemform {
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Inputs styling */
+.itemform input[type="text"],
+.itemform input[type="file"],
+.itemform input[type="number"],
+.itemform textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: 0.2s border-color;
+}
+
+.itemform input:focus,
+.itemform textarea:focus {
+  border-color: #000;
+  outline: none;
+}
+
+/* Preview Image */
+.itemimage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.itemimage img {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+.itemform button {
+
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.2s background-color;
+}
+
+.itemform button:hover {
+  background-color: #333;
+}
+
+/* Preview button specifically */
+.itemform button[type="button"] {
+  background-color: #2196F3;
+}
+
+.itemform button[type="button"]:hover {
+  background-color: #1976D2;
+}
+
+/* Textarea for description */
+.itemform textarea {
+  resize: vertical;
+  min-height: 80px;
+}

@@ -1,0 +1,39 @@
+
+.parentlog{
+    
+    height: 99vh;
+    width: 98.5vw;
+    border: 2px solid black;
+        background-image: url(/cyber-monday-retail-sales.jpg);
+        background-size: cover;
+        background-position: center;
+    
+}
+.log{
+    height: 250px;
+    width:350px;
+
+    margin-top: 100px;
+    margin-left: 450px;
+    border-radius: 20px;
+    background: #f0f0f0;
+    text-align: center;
+    gap: 20px;
+}
+.log input{
+    border: none;
+    border-bottom: 2px solid black;
+    height: 30px;
+}
+.btnlogin{
+    border-radius: 10px;
+    background-color: black;
+}
+p{
+    display: block;
+    margin-top: 10px;
+}
+.Signup{
+    text-decoration: none;
+    color:cadetblue;
+}
