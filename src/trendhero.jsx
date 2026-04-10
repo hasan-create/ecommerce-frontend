@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import './trendhero.css'
 import Navbar from './navbar';
-import TRENDS from './images/TRENDS.JPG'
+import TRENDS from './images/TRENDS.jpg'
 export default function Trend(){
     return(
 <div>
