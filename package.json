@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "my-ecommerse",
   "private": true,
   "version": "0.0.0",
@@ -29,36 +28,4 @@
     "globals": "^16.3.0",
     "vite": "^7.1.2"
   }
-=======
-  "dependencies": {
-    "axios": "^1.12.2",
-    "bcrypt": "^6.0.0",
-    "bcryptjs": "^3.0.2",
-    "cloudinary": "^2.9.0",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.18.1",
-    "multer": "^2.0.2",
-    "nodemon": "^3.1.10",
-    "streamifier": "^0.1.1"
-  },
-  "name": "backecomm",
-  "version": "1.0.0",
-  "main": "auth.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate:db": "node scripts/migrate-local-db-to-atlas.js",
-    "migrate:images:dry": "node scripts/migrate-images-to-cloudinary.js --dry-run",
-    "migrate:images": "node scripts/migrate-images-to-cloudinary.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
->>>>>>> ef329fda8f94438d3362f2b599eebd4da74abb95
 }
