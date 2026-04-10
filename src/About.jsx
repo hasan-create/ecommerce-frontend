@@ -1,4 +1,4 @@
-import "./about.css";
+import "./About.css";
 import about from "./img/about.jpg"; 
 
 export default function About() {
