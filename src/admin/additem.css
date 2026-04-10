@@ -93,3 +93,28 @@
   resize: vertical;
   min-height: 80px;
 }
+
+@media (max-width: 768px) {
+  .additem {
+    padding: 24px 12px;
+  }
+
+  .itemform {
+    padding: 20px 14px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .additem h1 {
+    font-size: 22px;
+  }
+
+  .itemform input[type="text"],
+  .itemform input[type="file"],
+  .itemform input[type="number"],
+  .itemform textarea {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}

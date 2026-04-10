@@ -38,3 +38,36 @@
   list-style-type: disc;
   padding-left: 25px;
 }
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 34px 18px;
+    min-height: auto;
+  }
+
+  .page-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .page-container p,
+  .contact-info p,
+  .help-guide ul {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 24px 14px;
+  }
+
+  .page-container h1 {
+    font-size: 1.7rem;
+  }
+
+  .faq-item h3 {
+    font-size: 1.1rem;
+  }
+}

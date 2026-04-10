@@ -1,4 +1,4 @@
-// AdminPanel.jsx
+﻿// AdminPanel.jsx
 import React, { useState, useEffect } from "react";
 import Additem from "./additem.jsx";
 import axios from "axios";
@@ -11,7 +11,7 @@ export default function AdminPanel() {
   // Fetch orders for admin
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/order/admin", {
+      const res = await axios.get("/api/order/admin", {
         withCredentials: true,
       });
       setOrders(res.data);
@@ -27,7 +27,7 @@ export default function AdminPanel() {
   const handleStatusChange = async (orderId, newStatus) => {
     try {
       await axios.put(
-        `http://localhost:3000/api/order/${orderId}/status`,
+        `/api/order/${orderId}/status`,
         { status: newStatus },
         { withCredentials: true }
       );
@@ -69,11 +69,11 @@ export default function AdminPanel() {
               <div key={order._id} className="order-card">
                 <h3>Order ID: {order._id}</h3>
                 <p>
-                  Customer: {order.fullName} {order.lastName} — {order.email}
+                  Customer: {order.fullName} {order.lastName} â€” {order.email}
                 </p>
                 <p>
                   Address: {order.address.street}, {order.address.city},{" "}
-                  {order.address.state}, {order.address.country} — ZIP:{" "}
+                  {order.address.state}, {order.address.country} â€” ZIP:{" "}
                   {order.address.zipCode} / PIN: {order.address.pincode}
                 </p>
                 <h4>Products:</h4>
@@ -112,3 +112,4 @@ export default function AdminPanel() {
     </div>
   );
 }
+

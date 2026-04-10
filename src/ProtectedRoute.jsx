@@ -1,6 +1,7 @@
-// ProtectedRoute.jsx
+﻿// ProtectedRoute.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "./utils/url";
 
 export default function ProtectedRoute({ children }) {
   const [checking, setChecking] = useState(true);
@@ -9,7 +10,7 @@ export default function ProtectedRoute({ children }) {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/auth/me", {
+        const res = await fetch(apiUrl("/api/auth/me"), {
           method: "GET",
           credentials: "include",
         });
@@ -19,7 +20,7 @@ export default function ProtectedRoute({ children }) {
         } else {
           navigate("/", { replace: true });
         }
-      } catch (err) {
+      } catch {
         navigate("/", { replace: true });
       }
     };
@@ -31,3 +32,4 @@ export default function ProtectedRoute({ children }) {
 
   return <>{children}</>;
 }
+

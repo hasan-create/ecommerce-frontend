@@ -1,7 +1,6 @@
 
 import './hero.css'
 import hero from './images/hero.jpg'
-import sweat from './images/sweat.jpg'
 import { Link } from "react-router-dom";
 
 export default function Hero() {

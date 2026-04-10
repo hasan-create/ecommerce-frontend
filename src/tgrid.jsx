@@ -1,9 +1,10 @@
-
+﻿
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
 import Card from "./card";
 import "./tgrid.css";
+import { buildImageUrl } from "./utils/url";
 
 export default function Tgrid() {
   const [products, setProducts] = useState([]);
@@ -30,7 +31,7 @@ export default function Tgrid() {
     const fetchFilteredProducts = async () => {
       setLoading(true); 
       try {
-        let url = "http://localhost:3000/api/products";
+        let url = "/api/products";
         const params = [];
 
         if (gender) params.push(`gender=${gender}`);
@@ -74,7 +75,7 @@ export default function Tgrid() {
             style={{ textDecoration: "none", color: "inherit" }}
           >
             <Card
-              image={`http://localhost:3000/${item.image}`}
+              image={buildImageUrl(item.image)}
               title={item.name}
               price={item.price}
             />
@@ -84,3 +85,4 @@ export default function Tgrid() {
     </div>
   );
 }
+

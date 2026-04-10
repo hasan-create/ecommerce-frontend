@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./TrackOrder.css";
@@ -14,7 +14,7 @@ export default function TrackOrder() {
     if (!orderId) return;
     const fetchOrder = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/order/${orderId}`, { withCredentials: true });
+        const res = await axios.get(`/api/order/${orderId}`, { withCredentials: true });
         setOrder(res.data);
       } catch (err) {
         console.error(err);
@@ -34,9 +34,9 @@ export default function TrackOrder() {
         <h3>Order ID: {order._id}</h3>
         <p>Status: <span className={`status-${order.status.replace(/\s/g, "-").toLowerCase()}`}>{order.status}</span></p>
         <p>Payment Method: {order.paymentMethod}</p>
-        <p>Customer: {order.fullName} {order.lastName} — {order.email}</p>
+        <p>Customer: {order.fullName} {order.lastName} â€” {order.email}</p>
         <p>
-          Address: {order.address.street}, {order.address.city}, {order.address.state}, {order.address.country} — ZIP: {order.address.zipCode} / PIN: {order.address.pincode}
+          Address: {order.address.street}, {order.address.city}, {order.address.state}, {order.address.country} â€” ZIP: {order.address.zipCode} / PIN: {order.address.pincode}
         </p>
 
         <h4>Products:</h4>
@@ -54,3 +54,4 @@ export default function TrackOrder() {
     </div>
   );
 }
+

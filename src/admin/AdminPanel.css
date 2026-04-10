@@ -48,3 +48,49 @@
   margin-bottom: 20px;
   background-color: white;
 }
+
+@media (max-width: 768px) {
+  .admin-container {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 14px;
+    box-sizing: border-box;
+  }
+
+  .admin-sidebar h2 {
+    margin-bottom: 0;
+    margin-right: 8px;
+    white-space: nowrap;
+  }
+
+  .admin-sidebar button {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+
+  .admin-content {
+    padding: 16px;
+  }
+
+  .order-card {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-sidebar h2 {
+    font-size: 18px;
+  }
+
+  .admin-sidebar button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

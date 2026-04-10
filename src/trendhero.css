@@ -43,3 +43,67 @@ width: 99.7;
     font-size: xx-large;
     margin-left: 30vw;
 }
+
+@media (max-width: 1024px) {
+    .h{
+        width: 92vw;
+        margin-right: 4vw;
+    }
+
+    .tpa{
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .trendparent{
+        height: auto;
+        flex-direction: column;
+    }
+
+    .h{
+        width: 94vw;
+        height: auto;
+        margin: 12px auto;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .h br{
+        display: none;
+    }
+
+    .hi{
+        width: 100%;
+        height: auto;
+        float: none;
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .htext{
+        width: auto;
+        height: auto;
+        margin: 16px 0;
+    }
+
+    .tpa{
+        font-size: 1.6rem;
+        margin: 16px 0 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .htext{
+        font-size: 14px;
+    }
+
+    .hhading{
+        font-size: 1.4rem;
+    }
+
+    .tpa{
+        font-size: 1.3rem;
+    }
+}

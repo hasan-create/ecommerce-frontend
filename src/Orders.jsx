@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./TrackOrder.css"; 
@@ -9,7 +9,7 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/order", {
+      const res = await axios.get("/api/order", {
         withCredentials: true,
       });
       setOrders(res.data);
@@ -26,7 +26,7 @@ export default function Orders() {
   const handleCancel = async (orderId) => {
     try {
       await axios.put(
-        `http://localhost:3000/api/order/${orderId}/status`,
+        `/api/order/${orderId}/status`,
         { status: "Cancelled" },
         { withCredentials: true }
       );
@@ -64,11 +64,11 @@ export default function Orders() {
           <p>Status: {order.status}</p>
           <p>Payment: {order.paymentMethod}</p>
           <p>
-            Customer: {order.fullName} {order.lastName} — {order.email}
+            Customer: {order.fullName} {order.lastName} â€” {order.email}
           </p>
           <p>
             Address: {order.address.street}, {order.address.city},{" "}
-            {order.address.state}, {order.address.country} — ZIP: {order.address.zipCode} / PIN: {order.address.pincode}
+            {order.address.state}, {order.address.country} â€” ZIP: {order.address.zipCode} / PIN: {order.address.pincode}
           </p>
 
           <h4>Products:</h4>
@@ -104,3 +104,4 @@ export default function Orders() {
     </div>
   );
 }
+

@@ -38,3 +38,40 @@ p{
     text-decoration: none;
     color:cadetblue;
 }
+
+@media (max-width: 768px) {
+    .parentsign{
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        border-width: 1px;
+        padding: 24px 12px;
+        box-sizing: border-box;
+    }
+
+    .sign{
+        width: min(100%, 420px);
+        height: auto;
+        margin: 24px auto 0;
+        padding: 18px 14px;
+        box-sizing: border-box;
+    }
+
+    .sign input{
+        width: 100%;
+        max-width: 280px;
+        margin-left: 0;
+    }
+
+    .btnsign{
+        width: 120px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sign{
+        width: 100%;
+        border-radius: 14px;
+    }
+}

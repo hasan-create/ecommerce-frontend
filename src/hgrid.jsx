@@ -1,41 +1,4 @@
-// import "./hgrid.css";
-// import React from "react";
 
-// export default function Hgrid() {
-
-//   const imageModules = import.meta.glob("./img/*.{jpg,jpeg,png}", { eager: true });
-//   const images = Object.values(imageModules).map((mod) => mod.default);
-//   const [currentIndex, setCurrentIndex] = React.useState(0);
-
-//   React.useEffect(() => {
-//     if (images.length === 0) return;
-//     const interval = setInterval(() => {
-//       setCurrentIndex((prev) => (prev + 1) % images.length);
-//     }, 3000);
-//     return () => clearInterval(interval);
-//   }, [images.length]);
-
-//   console.log("Loaded images:", images);
-
-//   return (
-//     <div className="hgrid">
-//       <div className="image-container">
-//         {images.length === 0 ? (
-//           <p style={{ color: "red", textAlign: "center" }}>⚠️ No images found!</p>
-//         ) : (
-//           images.map((img, index) => (
-//             <img
-//               key={index}
-//               src={img}
-//               alt={`slide-${index}`}
-//               className={`slide ${index === currentIndex ? "active" : ""}`}
-//             />
-//           ))
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
 import React from "react";
 import "./hgrid.css";
 

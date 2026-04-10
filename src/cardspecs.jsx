@@ -1,9 +1,10 @@
-
+﻿
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "./App";
 import "./cardspecs.css";
+import { buildImageUrl } from "./utils/url";
 
 export default function Cardspecs() {
   const User = useContext(UserContext);
@@ -26,7 +27,7 @@ const [selectedSize, setSelectedSize] = useState(null);
   const fetchFeedbacks = async (pid) => {
     if (!pid) return;
     try {
-      const res = await axios.get(`http://localhost:3000/api/feedback/${pid}`);
+      const res = await axios.get(`/api/feedback/${pid}`);
       setFeedbacks(res.data);
     } catch (err) {
       console.error("Error fetching feedbacks:", err);
@@ -42,7 +43,7 @@ const [selectedSize, setSelectedSize] = useState(null);
     if (!product) return;
     const itemToCart = { productId:product._id,name: product.name, price: product.price, image: product.image };
     try {
-      await axios.post("http://localhost:3000/api/cart/add", itemToCart, { withCredentials: true });
+      await axios.post("/api/cart/add", itemToCart, { withCredentials: true });
       alert("Product added to cart!");
       navigate("/cart");
     } catch (err) {
@@ -61,7 +62,7 @@ const [selectedSize, setSelectedSize] = useState(null);
     if (!product) return;
     try {
       await axios.post(
-        "http://localhost:3000/api/feedback/add",
+        "/api/feedback/add",
         { productId: product._id, rating, comment },
         { withCredentials: true }
       );
@@ -82,7 +83,7 @@ const [selectedSize, setSelectedSize] = useState(null);
     <div className="cardspecs-container">
       {}
       <div className="imgcontent">    <div className="product-image">
-        <img src={`http://localhost:3000/${product.image}`} alt={product.name} />
+        <img src={buildImageUrl(product.image)} alt={product.name} />
       </div>
 
       {}
@@ -110,11 +111,11 @@ const [selectedSize, setSelectedSize] = useState(null);
            <div className="content">
           
             <ul>
-              <li>  ✅ 100% Original Products  </li>
-              <li>🚚 Cash on Delivery Available </li>
-              <li>🔄 7-Day Easy Returns  </li>
-              <li>💳 Secure Payment Options  </li>
-              <li>⭐ Trusted by Thousands of Customers  </li>
+              <li>  âœ… 100% Original Products  </li>
+              <li>ðŸšš Cash on Delivery Available </li>
+              <li>ðŸ”„ 7-Day Easy Returns  </li>
+              <li>ðŸ’³ Secure Payment Options  </li>
+              <li>â­ Trusted by Thousands of Customers  </li>
             </ul>
      
 </div>
@@ -180,7 +181,7 @@ const [selectedSize, setSelectedSize] = useState(null);
 //   useEffect(() => {
 //     const fetchProduct = async () => {
 //       try {
-//         const res = await axios.get(`http://localhost:3000/api/products/${id}`);
+//         const res = await axios.get(`/api/products/${id}`);
 //         setProduct(res.data);
 //       } catch (err) {
 //         console.error("Error fetching product:", err);
@@ -193,7 +194,7 @@ const [selectedSize, setSelectedSize] = useState(null);
 //   const fetchFeedbacks = async (pid) => {
 //     if (!pid) return;
 //     try {
-//       const res = await axios.get(`http://localhost:3000/api/feedback/${pid}`);
+//       const res = await axios.get(`/api/feedback/${pid}`);
 //       setFeedbacks(res.data);
 //     } catch (err) {
 //       console.error("Error fetching feedbacks:", err);
@@ -208,13 +209,13 @@ const [selectedSize, setSelectedSize] = useState(null);
 // const addToCart = async () => {
 //   if (!product) return;
 //   const itemToCart = {
-//     productId: product._id,  // 🔹 MUST include
+//     productId: product._id,  // ðŸ”¹ MUST include
 //     name: product.name,
 //     price: product.price,
 //     image: product.image,
 //   };
 //   try {
-//     await axios.post("http://localhost:3000/api/cart/add", itemToCart, {
+//     await axios.post("/api/cart/add", itemToCart, {
 //       withCredentials: true,
 //     });
 //     alert("Product added to cart!");
@@ -239,7 +240,7 @@ const [selectedSize, setSelectedSize] = useState(null);
 //     if (!product) return;
 //     try {
 //       await axios.post(
-//         "http://localhost:3000/api/feedback/add",
+//         "/api/feedback/add",
 //         { productId: product._id, rating, comment },
 //         { withCredentials: true }
 //       );
@@ -291,11 +292,11 @@ const [selectedSize, setSelectedSize] = useState(null);
 
 //           <div className="content">
 //             <ul>
-//               <li>✅ 100% Original Products</li>
-//               <li>🚚 Cash on Delivery Available</li>
-//               <li>🔄 7-Day Easy Returns</li>
-//               <li>💳 Secure Payment Options</li>
-//               <li>⭐ Trusted by Thousands of Customers</li>
+//               <li>âœ… 100% Original Products</li>
+//               <li>ðŸšš Cash on Delivery Available</li>
+//               <li>ðŸ”„ 7-Day Easy Returns</li>
+//               <li>ðŸ’³ Secure Payment Options</li>
+//               <li>â­ Trusted by Thousands of Customers</li>
 //             </ul>
 //           </div>
 //         </div>
@@ -356,7 +357,7 @@ const [selectedSize, setSelectedSize] = useState(null);
 //   useEffect(() => {
 //     const fetchProduct = async () => {
 //       try {
-//         const res = await axios.get(`http://localhost:3000/api/products/${id}`);
+//         const res = await axios.get(`/api/products/${id}`);
 //         setProduct(res.data);
 //       } catch (err) {
 //         console.error("Error fetching product:", err);
@@ -369,7 +370,7 @@ const [selectedSize, setSelectedSize] = useState(null);
 //   const fetchFeedbacks = async (pid) => {
 //     if (!pid) return;
 //     try {
-//       const res = await axios.get(`http://localhost:3000/api/feedback/${pid}`);
+//       const res = await axios.get(`/api/feedback/${pid}`);
 //       setFeedbacks(res.data || []);
 //     } catch (err) {
 //       console.error("Error fetching feedbacks:", err);
@@ -390,7 +391,7 @@ const [selectedSize, setSelectedSize] = useState(null);
 //       image: product.image || "",
 //     };
 //     try {
-//       await axios.post("http://localhost:3000/api/cart/add", itemToCart, {
+//       await axios.post("/api/cart/add", itemToCart, {
 //         withCredentials: true,
 //       });
 //       alert("Product added to cart!");
@@ -418,7 +419,7 @@ const [selectedSize, setSelectedSize] = useState(null);
 //     if (!product) return;
 //     try {
 //       await axios.post(
-//         "http://localhost:3000/api/feedback/add",
+//         "/api/feedback/add",
 //         { productId: product._id, rating, comment },
 //         { withCredentials: true }
 //       );
@@ -470,11 +471,11 @@ const [selectedSize, setSelectedSize] = useState(null);
 
 //           <div className="content">
 //             <ul>
-//               <li>✅ 100% Original Products</li>
-//               <li>🚚 Cash on Delivery Available</li>
-//               <li>🔄 7-Day Easy Returns</li>
-//               <li>💳 Secure Payment Options</li>
-//               <li>⭐ Trusted by Thousands of Customers</li>
+//               <li>âœ… 100% Original Products</li>
+//               <li>ðŸšš Cash on Delivery Available</li>
+//               <li>ðŸ”„ 7-Day Easy Returns</li>
+//               <li>ðŸ’³ Secure Payment Options</li>
+//               <li>â­ Trusted by Thousands of Customers</li>
 //             </ul>
 //           </div>
 //         </div>
@@ -516,3 +517,4 @@ const [selectedSize, setSelectedSize] = useState(null);
 //     </div>
 //   );
 // }
+

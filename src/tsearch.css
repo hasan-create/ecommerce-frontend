@@ -136,3 +136,36 @@
 .help-dropdown p:last-child {
   border-bottom: none;
 }
+
+@media (max-width: 1024px) {
+  .searchp {
+    padding: 12px 20px;
+  }
+
+  .searchbox {
+    width: 58vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchp {
+    padding: 10px 12px;
+  }
+
+  .searchul {
+    gap: 10px;
+  }
+
+  .searchul li {
+    font-size: 14px;
+  }
+
+  .searchbox {
+    padding: 6px 12px;
+  }
+
+  .search {
+    font-size: 14px;
+    padding: 6px;
+  }
+}

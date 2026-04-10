@@ -17,3 +17,21 @@ p{
     margin: 0;
     
 }
+
+@media (max-width: 768px){
+    .card img{
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 480px){
+    .card{
+        gap: 4px;
+    }
+
+    .card p{
+        font-size: 14px;
+    }
+}

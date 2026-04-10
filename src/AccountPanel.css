@@ -64,3 +64,46 @@
 .panel-btn:hover {
   background-color: #333;
 }
+
+@media (max-width: 1024px) {
+  .account-panel {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .account-panel {
+    width: 85vw;
+    max-width: 320px;
+    right: -100vw;
+    height: 100vh;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .profile-circle,
+  .user-email,
+  .panel-btn {
+    margin-left: 0;
+  }
+
+  .profile-circle {
+    align-self: center;
+  }
+
+  .user-email {
+    text-align: center;
+  }
+
+  .panel-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .account-panel {
+    width: 100vw;
+    max-width: none;
+    padding: 14px;
+  }
+}

@@ -1,4 +1,4 @@
-
+﻿
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -38,7 +38,7 @@ export default function PlaceOrder() {
       return;
     }
     try {
-      const res = await axios.get("http://localhost:3000/api/cart", {
+      const res = await axios.get("/api/cart", {
         withCredentials: true,
       });
       // Expect res.data.Products
@@ -110,7 +110,7 @@ export default function PlaceOrder() {
       };
 
       await axios.post(
-        "http://localhost:3000/api/order/place",
+        "/api/order/place",
         orderPayload,
         { withCredentials: true }
       );
@@ -316,3 +316,4 @@ export default function PlaceOrder() {
     </div>
   );
 }
+

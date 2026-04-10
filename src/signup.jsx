@@ -1,4 +1,4 @@
-// import "./signup.css"
+﻿// import "./signup.css"
 // import { useState } from "react"
 // import {Link,useNavigate} from 'react-router-dom'
 // export default function Signup(){
@@ -12,7 +12,7 @@
 //     event.preventDefault();
 //     console.log(newuser);
 //     try{
-//     const res=await fetch("http://localhost:3000/api/auth/signup",{
+//     const res=await fetch("/api/auth/signup",{
 //       method:"POST",
 //       headers:{"Content-Type":"application/json"},
 //       body:JSON.stringify(newuser)
@@ -65,6 +65,7 @@
 import "./signup.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { apiUrl } from "./utils/url";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -83,7 +84,7 @@ export default function Signup() {
     console.log(newuser);
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/signup", {
+      const res = await fetch(apiUrl("/api/auth/signup"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newuser),
@@ -91,16 +92,16 @@ export default function Signup() {
 
       const data = await res.json();
 
-      // ✅ Better alert message (no [object Object])
+      // âœ… Better alert message (no [object Object])
       alert(data.message || data || "Signup response received");
 
-      // ✅ Navigate to login page if successful
+      // âœ… Navigate to login page if successful
       if (res.ok && data.message && data.message.toLowerCase().includes("successful")) {
         navigate("/");
       }
 
     } catch (err) {
-      console.error("❌ Signup error:", err);
+      console.error("âŒ Signup error:", err);
       alert("Something went wrong during signup");
     }
   };
@@ -160,3 +161,4 @@ export default function Signup() {
     </div>
   );
 }
+

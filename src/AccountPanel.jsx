@@ -1,4 +1,4 @@
-// import React, { useEffect, useState } from "react";
+﻿// import React, { useEffect, useState } from 'react.js';
 // import "./AccountPanel.css";
 
 // export default function AccountPanel({ isOpen, onClose, onLogout }) {
@@ -7,7 +7,7 @@
 //   useEffect(() => {
 //     const fetchUser = async () => {
 //       try {
-//         const res = await fetch("http://localhost:3000/api/auth/me", {
+//         const res = await fetch("/api/auth/me", {
 //           credentials: "include",
 //         });
 //         const data = await res.json();
@@ -33,7 +33,7 @@
 
 //   return (
 //     <div className={`account-panel ${isOpen ? "open" : ""}`}>
-//       <button className="close-btn" onClick={onClose}>×</button>
+//       <button className="close-btn" onClick={onClose}>Ã—</button>
 //       <div className="profile-circle">{firstLetter}</div>
 //       <p className="user-email">{user.email}</p>
 
@@ -55,6 +55,7 @@
 // }
 import React, { useEffect, useState } from "react";
 import "./AccountPanel.css";
+import { apiUrl } from "./utils/url";
 
 export default function AccountPanel({ isOpen, onClose, onLogout }) {
   const [user, setUser] = useState(null);
@@ -62,14 +63,14 @@ export default function AccountPanel({ isOpen, onClose, onLogout }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/auth/me", {
+        const res = await fetch(apiUrl("/api/auth/me"), {
           credentials: "include",
         });
         const data = await res.json();
 
         if (data && data.email) setUser(data);
         else setUser({ email: "Guest" });
-      } catch (err) {
+      } catch {
         setUser({ email: "Guest" });
       }
     };
@@ -82,7 +83,7 @@ export default function AccountPanel({ isOpen, onClose, onLogout }) {
 
   return (
     <div className={`account-panel ${isOpen ? "open" : ""}`}>
-      <button className="close-btn" onClick={onClose}>×</button>
+      <button className="close-btn" onClick={onClose}>Ã—</button>
       <div className="profile-circle">{firstLetter}</div>
       <p className="user-email">{user.email}</p>
 
@@ -96,3 +97,4 @@ export default function AccountPanel({ isOpen, onClose, onLogout }) {
     </div>
   );
 }
+

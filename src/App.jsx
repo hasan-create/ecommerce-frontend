@@ -1,214 +1,4 @@
-
-// import React, { useState, useEffect, createContext } from "react";
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import "./App.css";
-
-// import Hero from "./hero";
-
-// import Navbar from "./navbar";
-// import Footer from "./footer";
-// import Login from "./login.jsx";
-// import Trend from "./trendhero.jsx";
-// import Signup from "./signup.jsx";
-// import Tsearch from "./tsearch.jsx";
-// import AdminPanel from "./admin/AdminPanel.jsx";
-// import Cart from "./cart.jsx";
-// import axios from "axios";
-// import Tgrid from "./tgrid";
-// import Cardspecs from "./cardspecs.jsx";
-// import PlaceOrder from "./Placeorder.jsx";
-// import Orders from "./orders.jsx";
-// import TrackOrder from "./TrackOrder.jsx";
-
-// import Hgrid from "./hgrid.jsx";
-// import About from "./About.jsx";
-
-
-// import FAQ from "./pages/FAQ";
-// import Privacy from "./pages/Privacy";
-// import HelpCenter from "./pages/HelpCenter";
-
-// const UserContext = createContext();
-
-// function App() {
-//   const [products, setProducts] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const fetchProducts = async () => {
-//       try {
-//         const response = await axios.get("http://localhost:3000/api/products");
-//         setProducts(response.data);
-//         setLoading(false);
-//       } catch (err) {
-//         console.log("Error in fetching the data:", err);
-//         setLoading(false);
-//       }
-//     };
-//     fetchProducts();
-//   }, []);
-
-//   const router = createBrowserRouter([
-//     {
-//       path: "/",
-//       element: <Login />,
-//     },
-//     {
-//       path: "/home",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Hero />
-//           <Hgrid />
-//           <br />
-//           <Footer />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/Signup",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Signup />
-        
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/Trends",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Tsearch /> {}
-//           <Trend />
-//           <br /> <br /> <br />
-//           <Tgrid /> {}
-//           <br></br>
-//           <Footer/>
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/about",
-//       element: <><About /></>,
-//     },
-
-  
-//     {
-//       path: "/faq",
-//       element: (
-//         <>
-//           <Navbar />
-//           <FAQ />
-//           <Footer />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/privacy",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Privacy />
-//           <Footer />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/help",
-//       element: (
-//         <>
-//           <Navbar />
-//           <HelpCenter />
-//           <Footer />
-//         </>
-//       ),
-//     },
-
-//     {
-//       path: "/tgrid",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Tgrid />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/Admin",
-//       element: <AdminPanel />,
-//     },
-//     {
-//       path: "/Cart",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Cart />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/specs/:id",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Cardspecs />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/place-order",
-//       element: (
-//         <>
-//           <Navbar />
-//           <PlaceOrder />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/orders",
-//       element: (
-//         <>
-//           <Navbar />
-//           <Orders />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "/track-order",
-//       element: (
-//         <>
-//           <Navbar />
-//           <TrackOrder />
-//         </>
-//       ),
-//     },
-//     {
-//       path: "*",
-//       element: (
-//         <h2
-//           style={{
-//             textAlign: "center",
-//             marginTop: "100px",
-//             color: "gray",
-//           }}
-//         >
-//           404 | Page Not Found
-//         </h2>
-//       ),
-//     },
-//   ]);
-
-//   return (
-//     <UserContext.Provider value={products}>
-//       <RouterProvider router={router} />
-//     </UserContext.Provider>
-//   );
-// }
-
-// export { UserContext };
-// export default App;
+﻿
 import React, { useState, useEffect, createContext } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
@@ -225,11 +15,12 @@ import Cart from "./cart.jsx";
 import axios from "axios";
 import Tgrid from "./tgrid";
 import Cardspecs from "./cardspecs.jsx";
-import PlaceOrder from "./Placeorder.jsx";
-import Orders from "./orders.jsx";
+import PlaceOrder from "./PlaceOrder.jsx";
+import Orders from "./Orders.jsx";
 import TrackOrder from "./TrackOrder.jsx";
 import Hgrid from "./hgrid.jsx";
 import About from "./About.jsx";
+import { API_BASE_URL } from "./utils/url";
 
 import FAQ from "./pages/FAQ";
 import Privacy from "./pages/Privacy";
@@ -237,23 +28,21 @@ import HelpCenter from "./pages/HelpCenter";
 
 import ProtectedRoute from "./ProtectedRoute";
 
+axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.withCredentials = true;
 
 const UserContext = createContext();
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/products");
+        const res = await axios.get("/api/products");
         setProducts(res.data);
-        setLoading(false);
       } catch (err) {
         console.log("Error:", err);
-        setLoading(false);
       }
     };
     fetchProducts();
@@ -265,7 +54,7 @@ function App() {
       element: <Login />,
     },
 
-    // PROTECTED PAGES ⬇⬇⬇
+    // PROTECTED PAGES â¬‡â¬‡â¬‡
     {
       path: "/home",
       element: (
@@ -377,7 +166,7 @@ function App() {
       ),
     },
 
-    // PUBLIC PAGES ⬇⬇⬇
+    // PUBLIC PAGES â¬‡â¬‡â¬‡
     {
       path: "/Signup",
       element: (
@@ -451,3 +240,4 @@ function App() {
 
 export { UserContext };
 export default App;
+

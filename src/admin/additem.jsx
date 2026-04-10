@@ -1,4 +1,4 @@
-import './additem.css';
+﻿import './additem.css';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -37,14 +37,14 @@ export default function Additem() {
     });
 
     try {
-      const res = await axios.post('http://localhost:3000/api/products', formData, {
+      const res = await axios.post('/api/products', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       console.log(res.data);
-      alert('✅ Product added successfully!');
+      alert('âœ… Product added successfully!');
     } catch (err) {
       console.log(err);
-      alert('❌ Error adding product');
+      alert('âŒ Error adding product');
     }
   };
 
@@ -121,3 +121,4 @@ export default function Additem() {
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-
+﻿
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@
 //   useEffect(() => {
 //     const fetchCart = async () => {
 //       try {
-//         const res = await axios.get("http://localhost:3000/api/cart", { withCredentials: true });
+//         const res = await axios.get("/api/cart", { withCredentials: true });
 //         setCartItems(res.data.Products);
 //       } catch (err) {
 //         console.error(err);
@@ -22,7 +22,7 @@
 
 //   const removeFromCart = async (_id) => {
 //     try {
-//       const res = await axios.delete(`http://localhost:3000/api/cart/delete/${_id}`, { withCredentials: true });
+//       const res = await axios.delete(`/api/cart/delete/${_id}`, { withCredentials: true });
 //       setCartItems(res.data.cart.Products);
 //     } catch (err) {
 //       console.error(err);
@@ -72,7 +72,7 @@
 //   useEffect(() => {
 //     const fetchCart = async () => {
 //       try {
-//         const res = await axios.get("http://localhost:3000/api/cart", {
+//         const res = await axios.get("/api/cart", {
 //           withCredentials: true,
 //         });
 //         // Make sure you use the correct property name
@@ -89,7 +89,7 @@
 //   const removeFromCart = async (cartItemId) => {
 //     try {
 //       const res = await axios.delete(
-//         `http://localhost:3000/api/cart/delete/${cartItemId}`,
+//         `/api/cart/delete/${cartItemId}`,
 //         { withCredentials: true }
 //       );
 //       setCartItems(res.data.cart.Products || []);
@@ -111,7 +111,7 @@
 //       <h1>Your Cart</h1>
 //       {cartItems.map((item) => (
 //         <div key={item._id} className="cart-item">
-//           {/* 🔹 Use productId for Cardspecs link */}
+//           {/* ðŸ”¹ Use productId for Cardspecs link */}
 //           <Link
 //             to={`/specs/${item.productId}`}
 //             style={{
@@ -150,7 +150,7 @@
 //   useEffect(() => {
 //     const fetchCart = async () => {
 //       try {
-//         const res = await axios.get("http://localhost:3000/api/cart", {
+//         const res = await axios.get("/api/cart", {
 //           withCredentials: true,
 //         });
 //         setCartItems(res.data.Products || []); // fallback to empty array
@@ -166,7 +166,7 @@
 //   const removeFromCart = async (cartItemId) => {
 //     try {
 //       const res = await axios.delete(
-//         `http://localhost:3000/api/cart/delete/${cartItemId}`,
+//         `/api/cart/delete/${cartItemId}`,
 //         { withCredentials: true }
 //       );
 //       setCartItems(res.data.cart?.Products || []);
@@ -188,7 +188,7 @@
 //       <h1>Your Cart</h1>
 //       {cartItems.map((item) => (
 //         <div key={item._id} className="cart-item">
-//           {/* 🔹 Link to product spec using productId */}
+//           {/* ðŸ”¹ Link to product spec using productId */}
 //           <Link
 //             to={`/specs/${item.productId}`} // MUST use productId
 //             style={{
@@ -228,7 +228,7 @@
 //   useEffect(() => {
 //     const fetchCart = async () => {
 //       try {
-//         const res = await axios.get("http://localhost:3000/api/cart", {
+//         const res = await axios.get("/api/cart", {
 //           withCredentials: true,
 //         });
 //         setCartItems(res.data.Products || []);
@@ -244,7 +244,7 @@
 //   const removeFromCart = async (productId) => {
 //     try {
 //       const res = await axios.delete(
-//         `http://localhost:3000/api/cart/delete/${productId}`,
+//         `/api/cart/delete/${productId}`,
 //         { withCredentials: true }
 //       );
 //       setCartItems(res.data.cart?.Products || []);
@@ -296,6 +296,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./cart.css";
+import { buildImageUrl } from "./utils/url";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -303,7 +304,7 @@ export default function Cart() {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/cart", { withCredentials: true });
+        const res = await axios.get("/api/cart", { withCredentials: true });
         setCartItems(res.data.Products || []);
       } catch (err) {
         console.error("Error fetching cart:", err);
@@ -315,7 +316,7 @@ export default function Cart() {
 
   const removeFromCart = async (productId) => {
     try {
-      const res = await axios.delete(`http://localhost:3000/api/cart/delete/${productId}`, {
+      const res = await axios.delete(`/api/cart/delete/${productId}`, {
         withCredentials: true,
       });
       setCartItems(res.data.cart?.Products || []);
@@ -337,7 +338,7 @@ export default function Cart() {
             style={{ textDecoration: "none", color: "inherit", display: "flex", gap: "20px" }}
           >
             <img
-              src={`http://localhost:3000/${item.image}`}
+              src={buildImageUrl(item.image)}
               alt={item.Name}
               style={{ width: "100px", height: "100px", objectFit: "cover" }}
             />
@@ -353,3 +354,4 @@ export default function Cart() {
     </div>
   );
 }
+
