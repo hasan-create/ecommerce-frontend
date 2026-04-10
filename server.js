@@ -1,0 +1,91 @@
+
+const dotenv = require("dotenv");
+dotenv.config();
+
+const feedbackRoutes = require("./route/feedback");
+const orderRoutes = require("./route/order");
+
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
+
+const authRoutes = require("./route/auth");
+const productRoutes = require("./route/products");
+const cartRoutes = require("./route/cart");
+
+function normalizeOrigin(value) {
+  return String(value || "")
+    .trim()
+    .replace(/^['"]|['"]$/g, "")
+    .replace(/\/+$/, "");
+}
+
+const PORT = Number(process.env.PORT) || 3000;
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/ecommerse";
+const CLIENT_URLS = (process.env.CLIENT_URL || process.env.CLIENT_URLS || "http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174")
+  .split(",")
+  .map(normalizeOrigin)
+  .filter(Boolean);
+
+// ----------------------
+// CONNECT 
+// ----------------------
+mongoose
+  .connect(MONGODB_URL)
+  .then(() => console.log("MongoDB connection success"))
+  .catch((err) => console.log(err));
+
+// ----------------------
+// IMPORTANT: Disable Cache for Auth Security
+// ----------------------
+app.use((req, res, next) => {
+  res.setHeader("Cache-Control", "no-store");
+  next();
+});
+
+// ----------------------
+// MIDDLEWARES
+// ----------------------
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      const normalizedOrigin = normalizeOrigin(origin);
+
+      if (!origin || CLIENT_URLS.includes(normalizedOrigin)) {
+        return callback(null, true);
+      }
+
+      console.warn(`Blocked CORS origin: ${origin}`);
+      return callback(null, false);
+    },
+    credentials: true,
+  })
+);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static("uploads"));
+
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ ok: true, uptime: process.uptime() });
+});
+
+// ----------------------
+// ROUTES
+// ----------------------
+app.use("/api/auth", authRoutes);      // login, logout, signup
+app.use("/api", productRoutes);        // products
+app.use("/api/cart", cartRoutes);      // cart
+app.use("/api/feedback", feedbackRoutes);
+app.use("/api/order", orderRoutes);
+
+// ----------------------
+// START SERVER
+// ----------------------
+app.listen(PORT, () => {
+  console.log(`Server started at port ${PORT}`);
+  console.log(`Allowed client origins: ${CLIENT_URLS.join(", ")}`);
+});

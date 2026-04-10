@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -27,3 +28,23 @@ dist-ssr
 .env
 .env.*
 !.env.example
+=======
+# dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment variables
+.env
+
+# logs
+logs
+*.log
+
+# os files
+.DS_Store
+
+# dist (if using Babel / TypeScript)
+dist/
+>>>>>>> ef329fda8f94438d3362f2b599eebd4da74abb95
